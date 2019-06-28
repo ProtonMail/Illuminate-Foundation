@@ -2,6 +2,10 @@
 
 namespace Illuminate\Foundation\Providers;
 
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Queue\Console\TableCommand;
+use Illuminate\Foundation\Console\UpCommand;
+use Illuminate\Foundation\Console\DownCommand;
 use Illuminate\Auth\Console\ClearResetsCommand;
 use Illuminate\Cache\Console\CacheTableCommand;
 use Illuminate\Cache\Console\ClearCommand as CacheClearCommand;
