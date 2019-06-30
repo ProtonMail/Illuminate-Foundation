@@ -207,7 +207,7 @@ class Handler implements ExceptionHandlerContract
         } elseif ($e instanceof TokenMismatchException) {
             $e = new HttpException(419, $e->getMessage(), $e);
         } elseif ($e instanceof SuspiciousOperationException) {
-            $e = new NotFoundHttpException('Bad hostname provided.', $e);
+            $e = new NotFoundHttpException('Bad hostname provided', $e);
         }
 
         return $e;
