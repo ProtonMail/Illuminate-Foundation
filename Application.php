@@ -3,6 +3,12 @@
 namespace Illuminate\Foundation;
 
 use Closure;
+use RuntimeException;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Env;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Foundation\Application as ApplicationContract;
 use Illuminate\Contracts\Http\Kernel as HttpKernelContract;
@@ -894,7 +900,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
      */
     public function getCachedServicesPath()
     {
-        return $this->normalizeCachePath('APP_SERVICES_CACHE', 'cache/services.php');
+        return Env::get('APP_SERVICES_CACHE', $this->bootstrapPath().'/cache/services.php');
     }
 
     /**
@@ -904,7 +910,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
      */
     public function getCachedPackagesPath()
     {
-        return $this->normalizeCachePath('APP_PACKAGES_CACHE', 'cache/packages.php');
+        return Env::get('APP_PACKAGES_CACHE', $this->bootstrapPath().'/cache/packages.php');
     }
 
     /**
@@ -924,7 +930,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
      */
     public function getCachedConfigPath()
     {
-        return $this->normalizeCachePath('APP_CONFIG_CACHE', 'cache/config.php');
+        return Env::get('APP_CONFIG_CACHE', $this->bootstrapPath().'/cache/config.php');
     }
 
     /**
@@ -944,7 +950,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
      */
     public function getCachedRoutesPath()
     {
-        return $this->normalizeCachePath('APP_ROUTES_CACHE', 'cache/routes.php');
+        return Env::get('APP_ROUTES_CACHE', $this->bootstrapPath().'/cache/routes.php');
     }
 
     /**
@@ -964,25 +970,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
      */
     public function getCachedEventsPath()
     {
-        return $this->normalizeCachePath('APP_EVENTS_CACHE', 'cache/events.php');
-    }
-
-    /**
-     * Normalize a relative or absolute path to a cache file.
-     *
-     * @param  string  $key
-     * @param  string  $default
-     * @return string
-     */
-    protected function normalizeCachePath($key, $default)
-    {
-        if (is_null($env = Env::get($key))) {
-            return $this->bootstrapPath($default);
-        }
-
-        return Str::startsWith($env, '/')
-                ? $env
-                : $this->basePath($env);
+        return Env::get('APP_EVENTS_CACHE', $this->bootstrapPath().'/cache/events.php');
     }
 
     /**
