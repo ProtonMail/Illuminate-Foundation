@@ -5,6 +5,8 @@ namespace Illuminate\Foundation\Testing;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Traits\Tappable;
+use Illuminate\Support\Traits\Macroable;
 use Illuminate\Foundation\Testing\Assert as PHPUnit;
 use Illuminate\Foundation\Testing\Constraints\SeeInOrder;
 use Illuminate\Support\Arr;
