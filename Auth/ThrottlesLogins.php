@@ -2,6 +2,10 @@
 
 namespace Illuminate\Foundation\Auth;
 
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Cache\RateLimiter;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Cache\RateLimiter;
 use Illuminate\Http\Request;
