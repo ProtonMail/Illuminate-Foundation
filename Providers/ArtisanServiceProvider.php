@@ -54,22 +54,16 @@ use Illuminate\Foundation\Console\StorageLinkCommand;
 use Illuminate\Foundation\Console\TestMakeCommand;
 use Illuminate\Foundation\Console\UpCommand;
 use Illuminate\Foundation\Console\VendorPublishCommand;
-use Illuminate\Foundation\Console\ViewCacheCommand;
-use Illuminate\Foundation\Console\ViewClearCommand;
+use Illuminate\Console\Scheduling\ScheduleFinishCommand;
+use Illuminate\Database\Console\Seeds\SeederMakeCommand;
+use Illuminate\Foundation\Console\PackageDiscoverCommand;
+use Illuminate\Foundation\Console\NotificationMakeCommand;
+use Illuminate\Database\Console\Factories\FactoryMakeCommand;
+use Illuminate\Queue\Console\WorkCommand as QueueWorkCommand;
 use Illuminate\Notifications\Console\NotificationTableCommand;
 use Illuminate\Queue\Console\FailedTableCommand;
 use Illuminate\Queue\Console\FlushFailedCommand as FlushFailedQueueCommand;
 use Illuminate\Queue\Console\ForgetFailedCommand as ForgetFailedQueueCommand;
-use Illuminate\Queue\Console\ListenCommand as QueueListenCommand;
-use Illuminate\Queue\Console\ListFailedCommand as ListFailedQueueCommand;
-use Illuminate\Queue\Console\RestartCommand as QueueRestartCommand;
-use Illuminate\Queue\Console\RetryCommand as QueueRetryCommand;
-use Illuminate\Queue\Console\TableCommand;
-use Illuminate\Queue\Console\WorkCommand as QueueWorkCommand;
-use Illuminate\Routing\Console\ControllerMakeCommand;
-use Illuminate\Routing\Console\MiddlewareMakeCommand;
-use Illuminate\Session\Console\SessionTableCommand;
-use Illuminate\Support\ServiceProvider;
 
 class ArtisanServiceProvider extends ServiceProvider implements DeferrableProvider
 {
