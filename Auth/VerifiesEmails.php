@@ -39,9 +39,6 @@ trait VerifiesEmails
         if (! hash_equals((string) $request->route('hash'), sha1($request->user()->getEmailForVerification()))) {
             throw new AuthorizationException;
         }
-        if (! hash_equals(hash('sha1', $request->user()->getEmailForVerification()), $request->route('hash'))) {
-            throw new AuthorizationException;
-        }
 
         if ($request->user()->hasVerifiedEmail()) {
             return redirect($this->redirectPath());
