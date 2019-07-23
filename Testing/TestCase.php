@@ -145,53 +145,49 @@ abstract class TestCase extends BaseTestCase
      */
     protected function tearDown(): void
     {
-        if ($this->app) {
-            $this->callBeforeApplicationDestroyedCallbacks();
-
-            $this->app->flush();
-
-            $this->app = null;
-        }
-
-        $this->setUpHasRun = false;
-
-        if (property_exists($this, 'serverVariables')) {
-            $this->serverVariables = [];
-        }
-
-        if (property_exists($this, 'defaultHeaders')) {
-            $this->defaultHeaders = [];
-        }
-
-        if (class_exists('Mockery')) {
-            if ($container = Mockery::getContainer()) {
-                $this->addToAssertionCount($container->mockery_getExpectationCount());
-            }
-
-            try {
-                Mockery::close();
-            } catch (InvalidCountException $e) {
-                if (! Str::contains($e->getMethodName(), ['doWrite', 'askQuestion'])) {
-                    throw $e;
+        try {
+            if ($this->app) {
+                foreach ($this->beforeApplicationDestroyedCallbacks as $callback) {
+                    call_user_func($callback);
                 }
             }
-        }
+        } finally {
+            if ($this->app) {
+                $this->app->flush();
 
-        if (class_exists(Carbon::class)) {
-            Carbon::setTestNow();
-        }
+                $this->app = null;
+            }
 
-        if (class_exists(CarbonImmutable::class)) {
-            CarbonImmutable::setTestNow();
-        }
+            $this->setUpHasRun = false;
 
-        $this->afterApplicationCreatedCallbacks = [];
-        $this->beforeApplicationDestroyedCallbacks = [];
+            if (property_exists($this, 'serverVariables')) {
+                $this->serverVariables = [];
+            }
 
-        Artisan::forgetBootstrappers();
+            if (property_exists($this, 'defaultHeaders')) {
+                $this->defaultHeaders = [];
+            }
 
-        if ($this->callbackException) {
-            throw $this->callbackException;
+            if (class_exists('Mockery')) {
+                if ($container = Mockery::getContainer()) {
+                    $this->addToAssertionCount($container->mockery_getExpectationCount());
+                }
+
+                Mockery::close();
+            }
+
+            if (class_exists(Carbon::class)) {
+                Carbon::setTestNow();
+            }
+
+            if (class_exists(CarbonImmutable::class)) {
+                CarbonImmutable::setTestNow();
+            }
+
+            $this->afterApplicationCreatedCallbacks = [];
+            $this->beforeApplicationDestroyedCallbacks = [];
+
+            Artisan::forgetBootstrappers();
         }
     }
 
