@@ -46,7 +46,7 @@ abstract class TestCase extends BaseTestCase
     protected $beforeApplicationDestroyedCallbacks = [];
 
     /**
-     * The exception thrown while running a callback.
+     * The exception thrown while running an application destruction callback.
      *
      * @var \Throwable
      */
