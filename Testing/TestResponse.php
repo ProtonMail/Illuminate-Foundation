@@ -679,18 +679,15 @@ class TestResponse
 
             if (! is_int($key)) {
                 $hasError = false;
-
                 foreach (Arr::wrap($jsonErrors[$key]) as $jsonErrorMessage) {
                     if (Str::contains($jsonErrorMessage, $value)) {
                         $hasError = true;
-
-                        break;
                     }
                 }
 
-                if (! $hasError) {
+                if (!$hasError) {
                     PHPUnit::fail(
-                        "Failed to find a validation error in the response for key and message: '$key' => '$value'".PHP_EOL.PHP_EOL.$errorMessage
+                        "Failed to find a validation error in the response for key and message: '$key' => '$value'" . PHP_EOL . PHP_EOL . $errorMessage
                     );
                 }
             }
