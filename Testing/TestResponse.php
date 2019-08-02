@@ -682,6 +682,7 @@ class TestResponse
                 foreach (Arr::wrap($jsonErrors[$key]) as $jsonErrorMessage) {
                     if (Str::contains($jsonErrorMessage, $value)) {
                         $hasError = true;
+                        break;
                     }
                 }
 
