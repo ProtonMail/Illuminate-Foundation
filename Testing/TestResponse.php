@@ -679,9 +679,11 @@ class TestResponse
 
             if (! is_int($key)) {
                 $hasError = false;
+
                 foreach (Arr::wrap($jsonErrors[$key]) as $jsonErrorMessage) {
                     if (Str::contains($jsonErrorMessage, $value)) {
                         $hasError = true;
+
                         break;
                     }
                 }
