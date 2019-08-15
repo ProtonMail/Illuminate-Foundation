@@ -2,11 +2,14 @@
 
 namespace Illuminate\Foundation\Testing;
 
-use Illuminate\Support\Str;
 use Mockery;
 use Throwable;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Carbon\CarbonImmutable;
+use Illuminate\Support\Facades\Facade;
+use Illuminate\Database\Eloquent\Model;
+use Mockery\Exception\InvalidCountException;
 use Illuminate\Console\Application as Artisan;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Facade;
@@ -171,10 +174,10 @@ abstract class TestCase extends BaseTestCase
                 $this->addToAssertionCount($container->mockery_getExpectationCount());
             }
 
-            try{
+            try {
                 Mockery::close();
-            }catch(\Throwable $e){
-                if(! Str::contains($e->getMessage(), ['doWrite', 'askQuestion'])){
+            } catch (InvalidCountException $e) {
+                if (! Str::contains($e->getMethodName(), ['doWrite', 'askQuestion'])) {
                     throw $e;
                 }
             }
