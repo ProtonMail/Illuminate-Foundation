@@ -6,7 +6,8 @@ use Illuminate\Support\Str;
 use ReflectionClass;
 use ReflectionException;
 use ReflectionMethod;
-use SplFileInfo;
+use ReflectionException;
+use Illuminate\Support\Str;
 use Symfony\Component\Finder\Finder;
 
 class DiscoverEvents
@@ -44,10 +45,6 @@ class DiscoverEvents
                     static::classFromFile($listener, $basePath)
                 );
             } catch (ReflectionException $e) {
-                continue;
-            }
-
-            if (! $listener->isInstantiable()) {
                 continue;
             }
 
