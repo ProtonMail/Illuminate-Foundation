@@ -2,7 +2,6 @@
 
 namespace Illuminate\Foundation\Console;
 
-use Illuminate\Support\Env;
 use Illuminate\Console\Command;
 use Illuminate\Support\Env;
 use Illuminate\Support\ProcessUtils;

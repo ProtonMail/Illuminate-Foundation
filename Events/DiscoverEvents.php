@@ -6,8 +6,7 @@ use Illuminate\Support\Str;
 use ReflectionClass;
 use ReflectionException;
 use ReflectionMethod;
-use ReflectionException;
-use Illuminate\Support\Str;
+use SplFileInfo;
 use Symfony\Component\Finder\Finder;
 
 class DiscoverEvents

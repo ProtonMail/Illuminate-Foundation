@@ -4,11 +4,7 @@ namespace Illuminate\Foundation\Console;
 
 use Closure;
 use Exception;
-use Throwable;
-use ReflectionClass;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Env;
-use Illuminate\Support\Str;
+use Illuminate\Console\Application as Artisan;
 use Illuminate\Console\Command;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Contracts\Console\Kernel as KernelContract;
