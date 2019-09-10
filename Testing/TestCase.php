@@ -236,7 +236,7 @@ abstract class TestCase extends BaseTestCase
     {
         foreach ($this->beforeApplicationDestroyedCallbacks as $callback) {
             try {
-                call_user_func($callback);
+                $callback();
             } catch (Throwable $e) {
                 if (! $this->callbackException) {
                     $this->callbackException = $e;
