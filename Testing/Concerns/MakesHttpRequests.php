@@ -26,13 +26,6 @@ trait MakesHttpRequests
     protected $defaultCookies = [];
 
     /**
-     * Additional cookies for the request.
-     *
-     * @var array
-     */
-    protected $defaultCookies = [];
-
-    /**
      * Additional server variables for the request.
      *
      * @var array

@@ -20,13 +20,6 @@ class HandleExceptions
     public static $reservedMemory;
 
     /**
-     * Reserved memory so that errors can be displayed properly on memory exhaustion.
-     *
-     * @var string
-     */
-    public static $reservedMemory;
-
-    /**
      * The application instance.
      *
      * @var \Illuminate\Contracts\Foundation\Application
