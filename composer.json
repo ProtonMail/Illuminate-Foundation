@@ -1,0 +1,23 @@
+{
+    "name": "protonlabs/illuminate-foundation",
+    "description": "Mirror of Illuminate\\Foundation.",
+    "license": "MIT",
+    "require": {
+        "php": "^7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Illuminate\\Foundation\\": ""
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "7.x-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
